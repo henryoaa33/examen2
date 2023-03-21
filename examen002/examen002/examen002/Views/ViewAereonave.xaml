@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="examen002.Views.ViewAereonave"
+             xmlns:local="clr-namespace:examen002.ViewModel"
+             Title="Aereonave">
+
+
+    <ContentPage.BindingContext>
+        <local:ViewModelAereonave></local:ViewModelAereonave>
+    </ContentPage.BindingContext>
+
+
+
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#2B3467" Padding="24" CornerRadius="0"   >
+                <Label Text="Aereonaves" HorizontalTextAlignment="Center" TextColor="#BAD7E9" FontSize="36"/>
+            </Frame>
+
+
+
+
+            <Label Text="Nombre"></Label>
+            <Picker Title="Persona" ItemsSource="{Binding ListaPersona}" SelectedItem="{Binding PersonaSeleccionada}" ></Picker>
+
+            <Label Text="Aereonava"></Label>
+            <Picker Title="Tipo" ItemsSource="{Binding ListaAereonave}" SelectedItem="{Binding AereonaveSeleccionado}" ></Picker>
+
+            <Label Text="Capacidad de combustible"></Label>
+            <Entry Text="{Binding Capacidadcombustible}" Keyboard="Numeric" ></Entry>
+
+            <Label Text="Distancia recorrida"></Label>
+            <Entry Text="{Binding Distanciarecorrida}" Keyboard="Numeric" ></Entry>
+
+            <Label Text="Combustible"></Label>
+            <Entry Text="{Binding Combustible}" Keyboard="Numeric" ></Entry>
+
+
+            <Button Command="{Binding CrearAereonave}"  Text="Crear Aereonave"   ></Button>
+
+            <CollectionView ItemsSource="{Binding ListaAereonave}" 
+                            SelectionMode="Single"  
+                            SelectedItem="{Binding AereonaveSeleccionado}" 
+                            SelectionChangedCommand="{Binding CambioAereonave}"  >
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+
+                        <Grid Padding="10">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+
+
+
+
+                            </Grid.ColumnDefinitions>
+
+                            <Label  Text="{Binding capacidadcombustible}" Grid.Row="0" Grid.Column="0" ></Label>
+                            <Label  Text="{Binding distanciarecorrida}" Grid.Row="0" Grid.Column="1" ></Label>
+                            <Label  Text="{Binding combustible}" Grid.Row="0" Grid.Column="2" ></Label>
+                            <Label  Text="{Binding consumomillas}" Grid.Row="0" Grid.Column="3" ></Label>
+
+                        </Grid>
+
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

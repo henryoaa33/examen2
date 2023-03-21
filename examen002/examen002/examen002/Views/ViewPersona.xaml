@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:examen002.ViewModel"
+             Title="Persona"
+             x:Class="examen002.Views.ViewPersona">
+
+
+    <ContentPage.BindingContext>
+        <local:ViewModelPersona></local:ViewModelPersona>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Frame BackgroundColor="#2B3467" Padding="24" CornerRadius="0"   >
+            <Label Text="Persona" HorizontalTextAlignment="Center" TextColor="#BAD7E9" FontSize="36"/>
+        </Frame>
+
+        <Image Source="https://thumbs.dreamstime.com/b/el-avi%C3%B3n-sobre-la-bandera-de-honduras-concepto-viaje-134027602.jpg"
+               Aspect="AspectFit"
+               HorizontalOptions="Center" />
+
+        <Label Text="Nombre"></Label>
+        <Entry Text="{Binding Nombre}" Keyboard="Text" ></Entry>
+
+        <Label Text="Numero de Licencia"></Label>
+        <Entry Text="{Binding Numerolicencia}" Keyboard="Numeric"></Entry>
+
+        <Button Command="{Binding CrearPersona}" Text="Crear Persona"></Button>
+
+        <Label Text="{Binding Mensaje}"></Label>
+
+        <ListView ItemsSource="{Binding ListaPersonas}"   >
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" ></ColumnDefinition>
+                                <ColumnDefinition Width="*" ></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" ></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding nombre}"  ></Label>
+                            <Label Grid.Row="0" Grid.Column="2" Text="{Binding numerolicencia}"  ></Label>
+                        </Grid>
+
+
+
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+
+    </StackLayout>
+
+
+</ContentPage>
